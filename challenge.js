@@ -236,17 +236,22 @@ let users = [
 				"bs":"target end-to-end models"
 			}}];
 
-
+// new array that tells the function what key/value pairs to keep
 let newUsers = ["id", "name", "username", "email", "phone", "website", "company"];
-
+//maps through the array taking in the value of the keys in each object.
 users.map(function(val, index, array) {
-	let keys = Object.keys(val)
+	//assigns the key/value to the keys variable for each object.
+	let keys = Object.keys(val);
+	//loops through each key in the array and determines if it matches the values declared in the newUsers array
 	for(let key in keys) {
+		//If the key wasn't declared in the new array, delete it and the value associated with it.
 		if(-1 === newUsers.indexOf(keys[key])) delete val[keys[key]];
 	}
 });
 
+//sorts the array by object based on key(i.e. email)
 function sort(a,b) {
+	//compares the key in an object to the same key in other objects and assigns them a value
 	if (a.email < b.email) {
 		return -1;
 	} else if (a.email > b.email) {
